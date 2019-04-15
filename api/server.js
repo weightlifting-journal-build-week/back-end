@@ -3,15 +3,18 @@ const cors = require('cors');
 const helmet = require('helmet');
 
 const server = express();
-const userRouter = require('../helpers/user/user-router');
-const workoutRouter = require('../helpers/workout/workout-router');
-const exerciseRouter = require('../helpers/exercise/exercise-router');
-const setRouter = require('../helpers/set/set-router');
+
+const authRouter = require('../helpers/00-auth/auth-router')
+const userRouter = require('../helpers/01-user/user-router');
+const workoutRouter = require('../helpers/02-workout/workout-router');
+const exerciseRouter = require('../helpers/03-exercise/exercise-router');
+const setRouter = require('../helpers/04-set/set-router');
 
 server.use(express.json());
 server.use(helmet());
 server.use(cors());
 
+server.use('/auth', authRouter)
 server.use('/users', userRouter);
 server.use('/workouts', workoutRouter);
 server.use('/exercises', exerciseRouter);
