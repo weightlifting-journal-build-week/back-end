@@ -1,5 +1,7 @@
 const server = require('./api/server');
 
-server.listen(3300, ()=> {
-    console.log('\n=== I AM LISTENING on http://localhost:3300 ===\n')
+const port = process.env.PORT || 3300
+
+server.listen(port, ()=> {
+    console.log(`\n=== I AM LISTENING on ${port} ===\n`)
 });
