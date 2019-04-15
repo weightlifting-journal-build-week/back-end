@@ -8,4 +8,4 @@
 
 - endpoints for EXERCISES table
 
-- endpoints for SETS table
+- endpoints for SETS table           
