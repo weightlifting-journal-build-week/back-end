@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const helmet = require('helmet');
 
 const server = express();
@@ -9,6 +10,8 @@ const setRouter = require('../helpers/set/set-router');
 
 server.use(express.json());
 server.use(helmet());
+server.use(cors());
+
 server.use('/users', userRouter);
 server.use('/workouts', workoutRouter);
 server.use('/exercises', exerciseRouter);
