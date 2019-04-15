@@ -2,8 +2,20 @@ const db = require('../../data/dbConfig');
 
 module.exports = {
     find,
+    add,
+    destroy
 }
 
 function find(){
     return db('sets')
+}
+
+async function add(set){
+    const [id] = await db('sets').insert(set);
+
+    return db('sets').where({ id }).first()
+}
+
+function destroy(id){
+    return db('sets').where({ id }).del()
 }

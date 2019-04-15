@@ -27,7 +27,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
     try {
         user = await Users.add(req.body)
         res.status(200).json(user)
@@ -35,6 +35,8 @@ router.post('/', async (req, res) => {
         res.status(500).json(error)
     }
 })
+
+
 
 router.delete('/:id', async (req, res) => {
     try {
