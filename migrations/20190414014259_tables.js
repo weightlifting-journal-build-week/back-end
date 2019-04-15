@@ -8,10 +8,13 @@ exports.up = function(knex, Promise) {
         
         tbl.string('username', 255)
             .notNullable()
-            .unique() //required
+            .unique()
         
-        tbl
-            .string('password', 255).notNullable()  //required
+        tbl.string('password', 255).notNullable()
+            
+        tbl.integer('height', 255).notNullable()
+
+        tbl.integer('weight', 255).notNullable()
   
     })
   
@@ -20,7 +23,7 @@ exports.up = function(knex, Promise) {
         tbl.increments();
 
         tbl
-            .string('workout', 255)
+            .string('name', 255)
             .notNullable() //required
         
         tbl.date('date', 12)

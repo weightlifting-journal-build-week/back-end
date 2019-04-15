@@ -1,6 +1,9 @@
-router = require('express').Router();
-
+const router = require('express').Router();
+const bcrypt = require('bcryptjs');
 const Users = require('./user-model');
+
+const { authenticate } = require('../auth/auth-model');
+const { generateToken } = require('../auth/token');
 
 router.get('/', async (req, res) => {
     try{
@@ -14,7 +17,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         user = await Users.findById(req.params.id)
-        if(user > 0){
+        if(user){
             res.status(200).json(user)
         } else {
             res.status(404).send('couldnt find user')
