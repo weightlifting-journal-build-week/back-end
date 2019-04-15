@@ -4,7 +4,6 @@ const Users = require('./user-model');
 const { authenticate } = require('../00-auth/auth-model');
 
 
-
 router.get('/', async (req, res) => {
     try{
         users = await Users.find();

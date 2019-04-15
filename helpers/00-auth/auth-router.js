@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs')
 const Users = require('../01-user/user-model');
+const db = require('../../data/dbConfig.js')
 
 const { generateToken } = require('./token');
 const { authenticate } = require('./auth-model');
@@ -23,22 +24,26 @@ router.post('/register', async (req, res) => {
 });
 
 
-// router.post('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     
-//     try{
-//         let { username, password } = req.body;
-//         user = await Users.getBy({ username });
-        
-//         if(user && bcrypt.compareSync(password, user.password)){
-//             const token = generateToken(user);
-//             res.status(200).json( `Heres ya token ${user.username}`, token );
-//         } else {
-//             res.status(401).json({ message: 'invalid credentials' })
-//         }
+    try{
 
-//     } catch(error){
-//         res.status(500).json(error)
-//     }
-// })
+        user = await findBy(req.body.username);
+        
+        if(user && bcrypt.compareSync(req.body.password, user.password)){
+            const token = generateToken(user);
+            res.status(200).json( `Heres ya token ${user.username}`, token );
+        } else {
+            res.status(401).json({ message: 'invalid credentials' })
+        }
+
+    } catch(error){
+        res.status(500).json(error)
+    }
+})
+
+function findBy(sort){
+    return db('users').where(sort);
+}
 
 module.exports = router;
