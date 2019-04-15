@@ -20,4 +20,17 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.delete('/:id', async (req, res) => {
+    try{
+        count = await Workouts.destroy(req.params.id)
+        if(count > 0){
+            res.status(200).json('The workout has been removed')
+        } else {
+            res.status(401).json('The workout could not be found')
+        }
+    } catch(error){
+        res.status(500).json(error)
+    }
+})
+
 module.exports = router;

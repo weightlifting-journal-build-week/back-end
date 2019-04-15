@@ -28,7 +28,7 @@ exports.up = function(knex, Promise) {
         
         tbl.date('date', 12)
 
-        tbl.integer('user_id')
+        tbl.integer('user_id').notNullable()
             .unsigned()
             .references('id')
             .inTable('users')
@@ -49,7 +49,7 @@ exports.up = function(knex, Promise) {
             .notNullable() //required
 
         tbl
-            .integer('workout_id')
+            .integer('workout_id').notNullable()
             .unsigned()
             .references('id')
             .inTable('workouts')
@@ -69,7 +69,7 @@ exports.up = function(knex, Promise) {
             .notNullable() //required
        
         tbl
-            .integer('exercise_id')
+            .integer('exercise_id').notNullable()
             .unsigned()
             .references('id')
             .inTable('exercises')
