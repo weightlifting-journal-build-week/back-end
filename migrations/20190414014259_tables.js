@@ -2,9 +2,11 @@ exports.up = function(knex, Promise) {
     return knex.schema.createTable('users', (tbl) => {
   
         tbl.increments();
+
+        tbl.string('fullname', 255)
+        tbl.string('email', 255)
         
-        tbl
-            .string('username', 255)
+        tbl.string('username', 255)
             .notNullable()
             .unique() //required
         
@@ -16,13 +18,15 @@ exports.up = function(knex, Promise) {
     .createTable('workouts', (tbl) => {
 
         tbl.increments();
+
         tbl
             .string('workout', 255)
             .notNullable() //required
+        
+        tbl.date('date', 12)
 
         tbl.integer('user_id')
             .unsigned()
-            .notNullable()
             .references('id')
             .inTable('users')
             .onDelete('CASCADE')
@@ -44,7 +48,6 @@ exports.up = function(knex, Promise) {
         tbl
             .integer('workout_id')
             .unsigned()
-            .notNullable()
             .references('id')
             .inTable('workouts')
             .onDelete('CASCADE')
@@ -65,7 +68,6 @@ exports.up = function(knex, Promise) {
         tbl
             .integer('exercise_id')
             .unsigned()
-            .notNullable()
             .references('id')
             .inTable('exercises')
             .onDelete('CASCADE')
