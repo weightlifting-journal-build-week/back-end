@@ -4,7 +4,8 @@
   "description": "record your workouts boiii!!!",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "start": "node index.js"
   },
   "dependencies": {
     "bcrypt": "^3.0.5",
