@@ -33,4 +33,17 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+router.get('/:id/exercises/', async (req, res) => {
+    try{
+        let exercises = await Workouts.getWorkoutExercises(req.params.id)
+        if(exercises){
+            res.status(200).json(exercises)
+        } else {
+            res.status(404).send('workout exercises not found')
+        }
+    } catch(error){
+        res.status(500).json(error)
+    }
+})
+
 module.exports = router;

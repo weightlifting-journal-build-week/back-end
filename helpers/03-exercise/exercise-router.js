@@ -33,4 +33,17 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+router.get('/:id/sets/', async (req, res) => {
+    try{
+        let sets = await Exercises.getExerciseSets(req.params.id)
+        if(sets){
+            res.status(200).json(sets)
+        } else {
+            res.status(404).send('exercise sets not found')
+        }
+    } catch(error){
+        res.status(500).json(error)
+    }
+})
+
 module.exports = router;
