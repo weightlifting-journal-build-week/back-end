@@ -4,7 +4,8 @@ module.exports = {
     find,
     add,
     destroy,
-    getExerciseSets
+    getExerciseSets,
+    update
 }
 
 function find(){
@@ -26,4 +27,8 @@ function getExerciseSets(exerciseID){
         .join('exercises', 'exercises.id', 'sets.exercise_id')
         .select('sets.*')
         .where('sets.exercise_id', exerciseID)
+}
+
+function update(id, changes){
+    return db('exercises').where({ id }).update(changes)
 }

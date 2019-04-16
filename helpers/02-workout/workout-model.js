@@ -3,6 +3,7 @@ const db = require('../../data/dbConfig');
 module.exports = {
     find,
     add,
+    update,
     destroy,
     getWorkoutExercises
 }
@@ -20,6 +21,12 @@ async function add(workout){
 function destroy(id){
     return db('workouts').where({ id }).del()
 }
+
+function update(id, changes) {
+    return db('workouts')
+      .where({ id })
+      .update(changes);
+  }
 
 function getWorkoutExercises(workoutID){
     return db('exercises')

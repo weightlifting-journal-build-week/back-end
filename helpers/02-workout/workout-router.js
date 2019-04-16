@@ -46,4 +46,17 @@ router.get('/:id/exercises/', async (req, res) => {
     }
 })
 
+router.put('/:id', async (req, res) => {
+    try{
+    let workout = await Workouts.update(req.params.id, req.body)
+    if(workout){
+        res.status(200).json(workout)
+    } else {
+        res.status(404).json('could not update')
+    }
+    }catch(error){
+        res.status(500).json(error);
+    }
+})
+
 module.exports = router;
