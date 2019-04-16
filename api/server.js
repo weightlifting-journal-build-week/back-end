@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const { authenticate } = require('../helpers/00-auth/auth-model');
 
 const server = express();
 
@@ -14,9 +15,9 @@ server.use(express.json());
 server.use(helmet());
 server.use(cors());
 
-server.use('/auth', authRouter)
+server.use('/auth', authRouter);
 server.use('/users', userRouter);
-server.use('/workouts', workoutRouter);
+server.use('/workouts',  workoutRouter);
 server.use('/exercises', exerciseRouter);
 server.use('/sets', setRouter);
 

@@ -33,4 +33,18 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+router.put('/:id', async (req, res) => {
+    try {
+        set = await Sets.update(req.params.id, req.body)
+        if(set){
+            res.status(200).json(set)
+        } else {
+            res.status(500).json(error)
+        }
+            
+    } catch(error){
+        res.status(500).json(error)
+    }
+})
+
 module.exports = router;

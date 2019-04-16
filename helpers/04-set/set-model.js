@@ -3,7 +3,8 @@ const db = require('../../data/dbConfig');
 module.exports = {
     find,
     add,
-    destroy
+    destroy,
+    update
 }
 
 function find(){
@@ -18,4 +19,8 @@ async function add(set){
 
 function destroy(id){
     return db('sets').where({ id }).del()
+}
+
+function update(id, changes){
+    return db('sets').where({ id }).update(changes)
 }

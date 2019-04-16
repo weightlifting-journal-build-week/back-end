@@ -4,7 +4,6 @@ const Users = require('../01-user/user-model');
 const db = require('../../data/dbConfig.js')
 
 const { generateToken } = require('./token');
-const { authenticate } = require('./auth-model');
 
 
 router.post('/register', async (req, res) => {
@@ -25,14 +24,13 @@ router.post('/register', async (req, res) => {
 
 
 router.post('/login', async (req, res) => {
-    
-    try{
 
-        user = await findBy(req.body.username);
-        
-        if(user && bcrypt.compareSync(req.body.password, user.password)){
+    try{
+        const {username, password } = req.body
+        user = await Users.getBy({ username });
+        if(user && bcrypt.compareSync(password, user.password)){
             const token = generateToken(user);
-            res.status(200).json( `Heres ya token ${user.username}`, token );
+            res.status(200).json({ message: `welcome, here is your token ${user.username}`, token });
         } else {
             res.status(401).json({ message: 'invalid credentials' })
         }
@@ -41,9 +39,5 @@ router.post('/login', async (req, res) => {
         res.status(500).json(error)
     }
 })
-
-function findBy(sort){
-    return db('users').where(sort);
-}
 
 module.exports = router;

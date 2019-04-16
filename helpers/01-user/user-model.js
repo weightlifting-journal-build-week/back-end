@@ -14,8 +14,8 @@ function find(){
     return db('users')
 }
 
-function getBy(sort){
-    return db('users').where(sort);
+function getBy(select){
+    return db('users').where(select).first();
 }
 
 function findById(id) {
@@ -40,6 +40,8 @@ function getUserWorkouts(userID){
         .select('workouts.*')
         .where('workouts.user_id', userID)
 }
+
+
 
 function getUserWithWorkouts(id){
     let query = db('users');
