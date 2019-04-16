@@ -41,7 +41,7 @@
 
     -/exercises/ - get an array of exercise objects using .GET or add an exercise using .POST
 
-    -/exercises/:id - delete a workout with .DELETE or update an exercise using .PUT
+    -/exercises/:id - delete an exercise with .DELETE or update an exercise using .PUT
 
     -/exercises/:id/sets - get all sets for an exercise using a .GET
 

@@ -41,6 +41,8 @@ function getUserWorkouts(userID){
         .where('workouts.user_id', userID)
 }
 
+
+
 function getUserWithWorkouts(id){
     let query = db('users');
     if(id){ 
