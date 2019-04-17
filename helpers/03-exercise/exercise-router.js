@@ -20,6 +20,20 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.post('/:exercise_id/sets', async (req, res) => {
+    try{
+        const id = Number(req.params.exercise_id)
+        const set = await Exercises.addSetsToExercises({ reps: req.body.reps, weight: req.body.weight, exercise_id: id })
+        if(set){
+            res.status(200).json(set)
+        } else {
+            res.status(404).send('could not post sets to exercise')
+        }
+    } catch(error){
+        res.status(500).json(error);
+    }
+})
+
 router.delete('/:id', async (req, res) => {
     try{
         count = await Exercises.destroy(req.params.id);
