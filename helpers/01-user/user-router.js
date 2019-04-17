@@ -11,9 +11,9 @@ router.get('/', async (req, res) => {
 })
 
 
-router.get('/:id/workouts/', async (req, res) => {
+router.get('/:user_id/workouts/', async (req, res) => {
     try{
-        let user = await Users.getUserWorkouts(req.params.id)
+        let user = await Users.getUserWorkouts(req.params.user_id)
         if(user){
             res.status(200).json(user)
         } else {

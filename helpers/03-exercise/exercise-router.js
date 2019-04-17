@@ -47,9 +47,9 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
-router.get('/:id/sets/', async (req, res) => {
+router.get('/:exercise_id/sets/', async (req, res) => {
     try{
-        let sets = await Exercises.getExerciseSets(req.params.id)
+        let sets = await Exercises.getExerciseSets(req.params.exercise_id)
         if(sets){
             res.status(200).json(sets)
         } else {
