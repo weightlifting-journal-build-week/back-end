@@ -7,7 +7,6 @@ module.exports = {
     destroy,
     add,
     getUserWorkouts,
-    getUserWithWorkouts
 }
 
 function find(){
@@ -37,26 +36,6 @@ function destroy(id){
 function getUserWorkouts(userID){
     return db('workouts')
         .join('users', 'users.id', 'workouts.user_id')
-        .select('workouts.*')
+        .select('workouts.*' )
         .where('workouts.user_id', userID)
-}
-
-
-
-function getUserWithWorkouts(id){
-    let query = db('users');
-    if(id){ 
-            query.where('users.id', id).first();
-           
-            const promises = [query, this.getUserWorkouts(id)];
-         
-            return Promise.all(promises).then(function(results){
-                let [users, workouts] = results;
-    
-                users.workouts = workouts;
-    
-                return users;
-            })
-        }
-    
 }
