@@ -6,6 +6,7 @@ module.exports = {
     destroy,
     getExerciseSets,
     update,
+    addSetsToExercises
   
 }
 
@@ -17,6 +18,15 @@ async function add(exercise){
     const [id] = await db('exercises').insert(exercise);
 
     return db('exercises').where({ id }).first()
+}
+
+function addSetsToExercises(set){
+    return db('sets')
+    .insert({
+        reps: set.reps,
+        weight: set.weight,
+        exercise_id: set.exercise_id
+    })
 }
 
 function destroy(id){

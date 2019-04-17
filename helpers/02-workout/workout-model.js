@@ -5,7 +5,8 @@ module.exports = {
     add,
     update,
     destroy,
-    getWorkoutExercises
+    getWorkoutExercises,
+    addExerciseToWorkout
 }
 
 function find(){
@@ -16,6 +17,15 @@ async function add(workout){
     const [id] = await db('workouts').insert(workout);
 
     return db('workouts').where({ id }).first()
+}
+
+function addExerciseToWorkout(exercise){
+    return db('exercises')
+    .insert({
+        name: exercise.name,
+        targetArea: exercise.targetArea,
+        workout_id: exercise.workout_id
+    })
 }
 
 function destroy(id){

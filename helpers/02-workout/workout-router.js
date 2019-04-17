@@ -46,6 +46,19 @@ router.get('/:id/exercises/', async (req, res) => {
     }
 })
 
+router.post('/:workout_id/exercises', async (req, res) => {
+    try{
+        const exercise = await Workouts.addExerciseToWorkout({ name: req.body.name, targetArea: req.body.targetArea, workout_id: req.params.workout_id})
+        if(exercise){
+            res.status(200).json(exercise)
+        } else {
+            res.status(404).send('could not post exercise to workout')
+        }
+    } catch(error){
+        res.status(500).json(error);
+    }
+})
+
 router.put('/:id', async (req, res) => {
     try{
     let workout = await Workouts.update(req.params.id, req.body)
