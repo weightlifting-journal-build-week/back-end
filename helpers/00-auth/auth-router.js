@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs')
 const Users = require('../01-user/user-model');
+const jwt = require('jsonwebtoken');
+const secret = require('./secret').jwtSecret;
 const db = require('../../data/dbConfig.js')
 
 const { generateToken } = require('./token');
@@ -30,7 +32,7 @@ router.post('/login', async (req, res) => {
         user = await Users.getBy({ username });
         if(user && bcrypt.compareSync(password, user.password)){
             const token = generateToken(user);
-            res.status(200).json({ message: `welcome, here is your token ${user.username}`, token });
+            res.status(200).json({ message: `welcome, here is your token ${user.username}`, token, user_id: user.id });
         } else {
             res.status(401).json({ message: 'invalid credentials' })
         }
@@ -38,6 +40,19 @@ router.post('/login', async (req, res) => {
     } catch(error){
         res.status(500).json(error)
     }
+})
+
+
+//This endpoint allows for page refreshes
+router.post('/checkauth', (req, res) => {
+    const token = req.body.token;
+    jwt.verify(token, secret, error => {
+        if(error){
+            res.send(false)
+        } else {
+            res.send(true)
+        }
+    })
 })
 
 module.exports = router;

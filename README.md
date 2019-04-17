@@ -24,6 +24,9 @@
             kenobi = blue
             mace = purple
 
+
+    - /auth/checkauth - use this endpoint with a .POST to allow for data persistence on page refresh
+
 ***endpoints for USERS table***
 
     - /users/  - get an array of user objects using a .GET

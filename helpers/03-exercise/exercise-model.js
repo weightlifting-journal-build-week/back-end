@@ -5,7 +5,8 @@ module.exports = {
     add,
     destroy,
     getExerciseSets,
-    update
+    update,
+  
 }
 
 function find(){
