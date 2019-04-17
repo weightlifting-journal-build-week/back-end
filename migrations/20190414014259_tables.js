@@ -26,7 +26,7 @@ exports.up = function(knex, Promise) {
             .string('name', 255)
             .notNullable() //required
         
-        tbl.date('date', 12)
+        tbl.date('date', 255)
 
         tbl.integer('user_id').notNullable()
             .unsigned()
