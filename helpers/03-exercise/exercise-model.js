@@ -40,6 +40,7 @@ function getExerciseSets(exerciseID){
         .where('sets.exercise_id', exerciseID)
 }
 
+
 function update(id, changes){
     return db('exercises').where({ id }).update(changes)
 }

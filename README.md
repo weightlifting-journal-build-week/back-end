@@ -31,7 +31,7 @@
 
     - /users/  - get an array of user objects using a .GET
     
-    - /users/:id/workouts - gets workouts by user_id using a .GET
+    - /users/:user_id/workouts - gets workouts by user_id using a .GET
 
 ***endpoints for WORKOUTS table***
 
@@ -39,7 +39,7 @@
 
     - /workouts/:id - delete a workout with .DELETE or update a workout using .PUT
 
-    - /workouts/:id/exercises - get all exercises for a workout using a .GET. ALSO added the ability to .POST exercises to workouts
+    - /workouts/:workout_id/exercises - get all exercises for a workout using a .GET. ALSO added the ability to .POST exercises to workouts
 
 ***endpoints for EXERCISES table***
 
@@ -47,7 +47,7 @@
 
     -/exercises/:id - delete an exercise with .DELETE or update an exercise using .PUT
 
-    -/exercises/:id/sets - get all sets for an exercise using a .GET.  ALSO added the ability to .POST sets to exercises. 
+    -/exercises/:exercise_id/sets - get all sets for an exercise using a .GET.  ALSO added the ability to .POST sets to exercises. 
 
 ***endpoints for SETS table***
 

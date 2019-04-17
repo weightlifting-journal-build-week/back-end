@@ -28,6 +28,7 @@ function addExerciseToWorkout(exercise){
     })
 }
 
+
 function destroy(id){
     return db('workouts').where({ id }).del()
 }
