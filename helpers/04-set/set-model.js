@@ -2,6 +2,7 @@ const db = require('../../data/dbConfig');
 
 module.exports = {
     find,
+    findById,
     add,
     destroy,
     update
@@ -10,6 +11,12 @@ module.exports = {
 function find(){
     return db('sets')
 }
+
+function findById(id) {
+    return db('sets')
+      .where({ id })
+      .first();
+  }
 
 async function add(set){
     const [id] = await db('sets').insert(set);

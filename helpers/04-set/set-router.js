@@ -11,6 +11,19 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/:id', async (req, res) => {
+    try{
+        set = await Sets.findById(req.params.id)
+        if(set){
+            res.status(200).json(set)
+        } else {
+            res.status(404).send('set not found')
+        }
+    } catch(error){
+        res.status(500).json(error)
+    }
+})
+
 router.post('/', async (req, res) => {
     try{
         set = await Sets.add(req.body)

@@ -11,6 +11,19 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/:id', async (req, res) => {
+    try{
+        exercise = await Exercises.findById(req.params.id)
+        if(exercise){
+            res.status(200).json(exercise)
+        } else {
+            res.status(404).send('exercise not found')
+        }
+    } catch(error){
+        res.status(500).json(error)
+    }
+})
+
 router.post('/', async (req, res) => {
     try{
         exercise = await Exercises.add(req.body);
