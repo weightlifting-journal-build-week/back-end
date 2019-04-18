@@ -38,6 +38,7 @@ describe('user model testing', () => {
             height: 62,
             weight: 165
             })
+            
         const user = await Users.findById(1)
 
         expect(user.fullname).toEqual('Luke Skywalker')

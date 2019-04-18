@@ -109,7 +109,7 @@ describe('server testing', () =>{
             )
     
             expect(sets.status).toEqual(200)
-    })
+    });
 
 
 
