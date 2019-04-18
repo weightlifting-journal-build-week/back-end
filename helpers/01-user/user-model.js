@@ -13,10 +13,6 @@ function find(){
     return db('users')
 }
 
-function getBy(select){
-    return db('users').where(select).first();
-}
-
 function findById(id) {
     return db('users')
       .where({ id })
@@ -28,6 +24,11 @@ async function add(user){
 
     return db('users').where({ id }).first()
 }
+
+function getBy(select){
+    return db('users').where(select).first();
+}
+
 
 function destroy(id){
     return db('users').where({ id }).del()

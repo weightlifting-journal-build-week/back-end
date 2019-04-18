@@ -4,9 +4,10 @@
   "description": "record your workouts boiii!!!",
   "main": "index.js",
   "scripts": {
+    "test": "jest --watch --verbose",
     "server": "nodemon index.js",
-    "start": "node index.js",
-    "test": "jest --watch --verbose"
+    "start": "node index.js"
+    
   },
   "dependencies": {
     "bcrypt": "^3.0.5",
@@ -25,6 +26,6 @@
     "supertest": "^4.0.2"
   },
   "jest": {
-		"testEnvironment": "node"
-	}
+    "testEnvironment": "node"
+  }
 }

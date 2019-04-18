@@ -17,7 +17,7 @@ server.use(cors());
 
 server.use('/auth', authRouter);
 server.use('/users', userRouter);
-server.use('/workouts',  workoutRouter);
+server.use('/workouts', workoutRouter);
 server.use('/exercises', exerciseRouter);
 server.use('/sets', setRouter);
 

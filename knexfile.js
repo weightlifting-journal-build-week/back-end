@@ -20,10 +20,7 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: '/data/test.sqlite3'
-    },
-    migrations: {
-      diredtory: './migrations'
+      filename: './data/test.sqlite3'
     }
   }
 };
