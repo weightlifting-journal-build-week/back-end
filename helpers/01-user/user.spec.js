@@ -68,6 +68,7 @@ describe('user model testing', () => {
             height: 62,
             weight: 165
             })
+            
         expect(user.fullname).toEqual('Luke Skywalker')
         destroy = await Users.destroy(1)
 

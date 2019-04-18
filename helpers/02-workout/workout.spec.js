@@ -25,6 +25,22 @@ describe('workout model testing', () => {
       expect(workouts).toHaveLength(0)
     })
 
+    test('should destroy a workout', async () => {
+        await db('workouts').truncate()
+
+        const workout = await Workouts.add({
+            name: 'Cardio Day',
+            date: 'Wednesday, April 17',
+            user_id: 1
+            });
+        let work = await Workouts.findById(1)
+        expect(work.name).toBe('Cardio Day')
+        
+        await Workouts.destroy(1)
+        let newworkout = await Workouts.findById(1)
+        expect(newworkout).toEqual(undefined)
+    })
+
     test('should add an exercise to a workout', async () =>{
             await Workouts.add({
             name: 'Cardio Day',
@@ -42,7 +58,6 @@ describe('workout model testing', () => {
 
             expect(exercises[0].name).toBe('leg lifts')
             
-
     })
     
     

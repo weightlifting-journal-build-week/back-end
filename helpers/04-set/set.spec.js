@@ -8,10 +8,11 @@ describe('set model testing', () => {
     })
 
     test('should add a set', async () => {
-        const set = await Sets.add({  reps: 101,
-                                           weight: 199,
-                                           exercise_id: 1
-                                           });
+        const set = await Sets.add({  
+        reps: 101,
+        weight: 199,
+        exercise_id: 1
+        });
 
         expect(set.reps).toEqual(101);
       
