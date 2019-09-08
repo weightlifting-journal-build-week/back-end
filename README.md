@@ -8,15 +8,15 @@
         ## data requirement example ##
         {
         "fullname": "Darth Vader",
-        "email": "killingyounglings@yahoo.com",
-        "username": "childslayer",
+        "email": "IwearAmask@yahoo.com",
+        "username": "IamEvil",
         "password": "red",
         "height": 72,
         "weight": 250
         }
 
     - /auth/login - login with a user using a .POST
-        "username": "childslayer",
+        "username": "IamEvil",
         "password": "red"
 
         *** passwords for seed users ***
